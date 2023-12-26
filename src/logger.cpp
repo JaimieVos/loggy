@@ -6,6 +6,12 @@
 
 #include <logger.h>
 
+#ifdef _WIN32
+#define localtime_safe(a, b) localtime_s(a, b)
+#else
+#define localtime_safe(a, b) localtime_r(b, a)
+#endif
+
 namespace loggy
 {
 	void Logger::initialize()
@@ -58,7 +64,7 @@ namespace loggy
 		std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 		
 		struct tm timeinfo;
-		if (localtime_s(&timeinfo, &now) != 0)
+		if (localtime_safe(&timeinfo, &now) != 0)
 		{
 			return "Error in " + std::string(__FILE__) + ":" + std::string(__FUNCTION__) + " - localtime_s failed";
 		}
