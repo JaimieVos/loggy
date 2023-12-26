@@ -5,6 +5,7 @@ project(loggy LANGUAGES CXX)
 file(GLOB_RECURSE sources
     "src/*.h"
     "src/*.cpp"
+    "src/*.inl"
     "example.cpp"
 )
 
