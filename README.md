@@ -23,6 +23,13 @@ cmake ..
 
 ### Usage
 
+First you'll have to include `loggy.h` into your project:
+```cpp
+#include <loggy.h>
+```
+
+A full example can be found in the [example.cpp](example.cpp) file.
+
 #### Set the default log level:
 ```cpp
 LOGGY_SET_DEFAULT_LOG_LEVEL(LogLevel::DEBUG);
