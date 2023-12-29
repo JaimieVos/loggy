@@ -25,7 +25,7 @@ namespace loggy
 		 * @param file The file the log message is from.
 		 * @param line The line the log message is from.
 		 */
-		static void log(const Log& logMessage, const char* file = __FILE__, const int line = __LINE__);
+		static void log(const Log& logMessage, const char* file, const int line);
 
 		/**
 		 * @brief Log a message to the console.
@@ -83,9 +83,13 @@ namespace loggy
 		static std::string getSourceInfo(const char* file, const int line);
 
 		/**
-		 * @brief Gets the formatted log string.
-		 * 
-		 * @param logMessage The log message.
+		 * @brief Format a log message.
+		 *
+		 * @param logMessage The log message
+		 * @param logLevel The log level of the message.
+		 * @param file The file the log message is from.
+		 * @param line The line the log message is from.
+		 * @return The formatted log message.
 		 */
 		static std::string getFormattedLogMessage(const std::string& logMessage, const LogLevel logLevel, const char* file, const int line);
 

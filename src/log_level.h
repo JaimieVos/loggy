@@ -1,5 +1,9 @@
 #pragma once
 
+#include <string>
+
+#include <colors.h>
+
 namespace loggy
 {
 	/**
@@ -30,6 +34,19 @@ namespace loggy
 		case ERROR:   return "ERROR";
 		case FATAL:   return "FATAL";
 		default:      return "UNKNOWN";
+		}
+	}
+
+	inline std::string toColor(LogLevel logLevel)
+	{
+		switch (logLevel)
+		{
+		case DEBUG:   return ANSI_BG_BLUE + std::string(ANSI_WHITE);
+		case INFO:	  return ANSI_BG_GREEN + std::string(ANSI_WHITE);
+		case WARNING: return ANSI_BG_YELLOW + std::string(ANSI_WHITE);
+		case ERROR:   return ANSI_BG_RED + std::string(ANSI_WHITE);
+		case FATAL:   return ANSI_BG_RED + std::string(ANSI_WHITE);
+		default:      return ANSI_BG_RESET;
 		}
 	}
 }
