@@ -9,6 +9,7 @@ int main()
 	LOGGY_SET_SOURCE_INFO_FORMAT("%f:%l");
 	LOGGY_SET_LOG_FORMAT("%t [%l] %s: %m");
 	
+	LOGGY_LOG("DEFAULT LEVEL");
 	LOGGY_LOG("DEBUG" << ": This is the first message", LogLevel::DEBUG);
 	LOGGY_LOG("INFO!", LogLevel::INFO);
 	LOGGY_LOG("WARNING", LogLevel::WARNING);
