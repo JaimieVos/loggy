@@ -9,8 +9,11 @@ int main()
 	LOGGY_SET_SOURCE_INFO_FORMAT("%f:%l");
 	LOGGY_SET_LOG_FORMAT("%t [%l] %s: %m");
 	
-	LOGGY_LOG("Hello " << "World!");
-	LOGGY_LOG("FATAL ERROR!", LogLevel::FATAL);
+	LOGGY_LOG("DEBUG" << ": This is the first message", LogLevel::DEBUG);
+	LOGGY_LOG("INFO!", LogLevel::INFO);
+	LOGGY_LOG("WARNING", LogLevel::WARNING);
+	LOGGY_LOG("ERROR", LogLevel::ERROR);
+	LOGGY_LOG("FATAL", LogLevel::FATAL);
 	
 	return 0;
 }

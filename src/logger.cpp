@@ -6,6 +6,7 @@
 
 #include <logger.h>
 #include <formatter.h>
+#include <colors.h>
 
 #ifdef _WIN32
 #define localtime_safe(a, b) localtime_s(a, b)
@@ -91,7 +92,7 @@ namespace loggy
 
 	std::string Logger::getFormattedLogMessage(const std::string& logMessage, const LogLevel logLevel, const char* file, const int line)
 	{
-		std::string formattedInfo = m_LogFormat;
+		std::string formattedInfo = toColor(logLevel) + m_LogFormat;
 
 		// Replace %t with the timestamp
 		formattedInfo = replaceSymbol("%t", getTimestamp(), formattedInfo);
@@ -104,6 +105,9 @@ namespace loggy
 
 		// Replace %m with the log message
 		formattedInfo = replaceSymbol("%m", logMessage, formattedInfo);
+
+		// Reset the color
+		formattedInfo += ANSI_RESET;
 
 		return formattedInfo;
 	}
